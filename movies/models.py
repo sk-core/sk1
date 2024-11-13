@@ -20,7 +20,7 @@ class Review(models.Model) :
     #定义了一个日期时间字段 date，自动记录评论创建的时间，auto_now_add=True 意味着在创建时自动设置当前时间。
     date = models.DateTimeField(auto_now_add=True)
     #定义了一个外键字段 user，与 User 模型关联，表示评论的作者。当用户被删除时，关联的评论也会被删除
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='movie_reviews')
     #定义了一个外键字段 movie，与 Movie 模型关联，表示这条评论是针对哪部电影的。删除电影时，该电影的评论也会被删除。
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     #定义了一个布尔字段 watchAgain，用于表示用户是否愿意再次观看该电影
