@@ -29,6 +29,11 @@ urlpatterns = [
     path('book/', include('book.urls')),
     path('accounts/', include('accounts.urls')),
 ]
+
+# git status
+# git add .
+# git commit -m "添加了新的功能描述"
+# git push origin main
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                       document_root=settings.MEDIA_ROOT)

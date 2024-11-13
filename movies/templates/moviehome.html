@@ -45,7 +45,7 @@
         {% for movie in movies %}
             <div class="col">
                 <div class="card">
-                    <img class="card-img-top" src="{{ movie.image.url }}" alt="{{ movie.title }}" />
+                    <img class="card-img-top" src="{{ movie.image_url.url }}" alt="{{ movie.title }}" />
                     <div class="card-body">
                         <a href="{% url 'moviedetail' movie.id %}">
                         <h5 class="card-title fw-bold">{{ movie.title }}</h5>
