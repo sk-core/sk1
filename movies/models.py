@@ -4,6 +4,7 @@ from django.contrib.auth.models import User  # 导入用户模型，用于与用
 class Movie(models.Model):  # 定义一个电影模型，继承自 Django 的 models.Model
     title = models.CharField(max_length=100, verbose_name="电影名")  # 定义电影名称字段，最大长度为 100，显示名称为“电影名”
     description = models.CharField(max_length=250, verbose_name="电影简介")  # 定义电影简介字段，最大长度为 250，显示名称为“电影简介”
+    # image_url正确填写进前端src
     image_url = models.ImageField(upload_to='movie/images/', verbose_name="电影海报", null=True, blank=True)  # 定义电影海报字段，上传到指定目录，允许 null 和空值
     movie_url = models.URLField(blank=True, verbose_name="电影资源链接")  # 定义电影资源链接字段，允许空值，显示名称为“电影资源链接”
 

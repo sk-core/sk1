@@ -6,7 +6,8 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 from movies.forms import ReviewForm
 from django.contrib.auth.decorators import login_required
-
+from django.db.models import Q
+from .models import Movie
 @login_required
 # Create your views here.
 def createmoviereview(request, movie_id):  # 定义视图函数 createmoviereview，接收请求和电影 ID
@@ -62,8 +63,27 @@ def updatemoviereview(request, review_id) :
             return redirect('moviedetail', review.movie.id)
         except ValueError:
             return render(request, 'updatemoviereview.html', {'review':review, 'form':form, 'error':'提交非法数据'})
+
+
 @login_required
 def deletemoviereview(request, review_id) :
     review = get_object_or_404(Review, pk=review_id, user=request.user)
     review.delete()
     return redirect('moviedetail', review.movie.id)
+
+
+def search(request):
+    query = request.GET.get('query')
+    results = []  # 初始化 results 为一个空列表
+
+    if query:
+        # 从数据库中查询与查询条件匹配的电影
+        results = Movie.objects.filter(
+            Q(title=query) |
+            Q(description=query) |
+            Q(image_url=query)|
+            Q(movie_url=query)
+        )
+
+    return render(request, 'search_results.html',
+                  {'query': query, 'results': results})

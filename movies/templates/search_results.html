@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="header-title">Search Results for "{{ query }}"</h2>
+    {% if results %}
+        <ul class="list-group">
+            {% for item in results %}
+                <li class="list-group-item">
+                    <h5>电影名:{{ movie.title }}</h5>
+                    <p>Actor: {{ movie.description }}</p>
+                    <p>Year: {{ movie.movie_url }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found for "{{ query }}". Please try a different search term.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+</body>
+</html>

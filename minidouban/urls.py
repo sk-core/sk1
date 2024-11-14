@@ -28,6 +28,7 @@ urlpatterns = [
     path('movies/', include('movies.urls')),
     path('book/', include('book.urls')),
     path('accounts/', include('accounts.urls')),
+    path('search/', views.search, name='search'),
 ]
 
 # git status
