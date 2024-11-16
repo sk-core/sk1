@@ -19,7 +19,7 @@ from movies import views
 from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path,include
-
+from .views import movie_info
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,7 @@ urlpatterns = [
     path('book/', include('book.urls')),
     path('accounts/', include('accounts.urls')),
     path('search/', views.search, name='search'),
+    path('movieticket/', movie_info, name='movie_info'),
 ]
 
 # git status
