@@ -30,6 +30,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('search/', views.search, name='search'),
     path('movieticket/', movie_info, name='movie_info'),
+    path('qr_code/', views.generate_qr_code, name='generate_qr_code'),
 ]
 
 # git status

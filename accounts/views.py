@@ -39,7 +39,7 @@ def signupaccount(request) :
                 user = User.objects.create_user(username=username, password=password1)
                 user.save()
                 login(request, user)
-                return redirect('moviehome')
+                return redirect('signup')
             except IntegrityError:
                 return render(request, 'signupaccount.html', {'form': UUserCreateForm, 'error': '用户已存在'})
         else:
